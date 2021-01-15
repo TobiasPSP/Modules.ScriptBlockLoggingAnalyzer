@@ -78,6 +78,28 @@ Set-SBLLogSize -MaxSizeMB 100
 
 Currently, only code executed by *Windows PowerShell* will be logged and retrieved. *PowerShell 7* saves the logged scriptblock code to a different eventlog. You are welcome to adapt this code to *PowerShell 7*. If you do, please let me know or issue a pull request.
 
+Note: ScriptBlock logging was introduced to *Windows PowerShell* in version 4 and fully implemented in version 5. That's yet another good reason why on *Windows* you should check your *Windows PowerShell* version and make sure you are not using an outdated version. Plus you should make sure that in your *Windows Features* the old optional *PowerShell 2* is not available. Hackers love that old version exactly because *it does not log*:
+
+```
+PS> Get-WindowsOptionalFeature -FeatureName *powershellv2* -Online
+
+
+FeatureName      : MicrosoftWindowsPowerShellV2Root
+DisplayName      : Windows PowerShell 2.0
+Description      : Fügt Windows PowerShell 2.0 hinzu oder entfernt diese Komponente.
+RestartRequired  : Possible
+State            : Disabled
+CustomProperties :
+
+
+FeatureName      : MicrosoftWindowsPowerShellV2
+DisplayName      : Windows PowerShell 2.0 Engine
+Description      : Fügt Windows PowerShell 2.0 Engine hinzu oder entfernt diese Komponente.
+RestartRequired  : Possible
+State            : Disabled
+CustomProperties :
+```
+
 Due to a long-standing bug in all versions of **PowerShell** (including *PowerShell 7*), when scriptblock logging is enabled, pipeline operations are slowed down. This can affect scripts that process a large number of objects. More details and workarounds can be found here: https://powershell.one/tricks/performance/pipeline
 
 ## Reading Logged Source Code
