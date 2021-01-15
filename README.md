@@ -105,6 +105,8 @@ You can automate scanning logged source code and for example routinely search fo
 
 You could also check to see which file types have been executed in the past, and for example identify whether unknown *.exe*-Applications executed **PowerShell** code. If so, you can even see and examine the **PowerShell** code that executed inside such an application. 
 
+#### Identifying Suspicious Applications
+
 This example reads all logged scripts and returns the file extensions found that executed **PowerShell** code:
 
 ```
@@ -112,9 +114,18 @@ PS> Get-SBLEvent |
   Foreach-Object { [System.IO.Path]::GetExtension($_.Name) } | 
   Group-Object -NoElement
 
+Count Name
+----- ----
+41227
+  885 .ps1
+  496 .psm1
+  734 .psd1
+    5 .exe
 ```
+Note: based on the number of logged scripts, this can take a long time to run.
+Blank file extensions represent interactively entered **PowerShell** code.
 
-Note: based on the number of logged scripts, this may take a couple of minutes to run.
+#### Exposing PowerShell Code Inside Applications
 
 The next example would search for *.exe*-Applications and return file path and **PowerShell** source code content:
 
