@@ -32,7 +32,7 @@ To enable scriptblock logging to the eventlog, with *Administrator* privileges, 
 Enable-SBL
 ```
 
-Note: it may take up to a few minutes until scriptblock logging is fully enabled.
+Note: it may take few minutes until scriptblock logging is fully enabled. The most relaxed approach is to enable scriptblock logging and check back after lunch or the next day.
 
 ### Hardening
 
