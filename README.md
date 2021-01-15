@@ -149,4 +149,8 @@ Note: Even if scriptblock logging is not enabled, **PowerShell** will log select
 
 ## Contribute
 
-If you have questions or suggestions, please join our (Discussions)[https://github.com/TobiasPSP/Modules.ScriptBlockLoggingAnalyzer/discussions].
+If you have questions or suggestions, please join our [Discussions](https://github.com/TobiasPSP/Modules.ScriptBlockLoggingAnalyzer/discussions).
+
+A much more preferred way is to submit issues and pull requests: if you identify areas of improvement, i.e. expanding it to *PowerShell 7* and adding eventlog filters for better performance, I'd greatly appreciate if you helped code the improvements and share the load of development.
+
+By opening [issues](https://github.com/TobiasPSP/Modules.ScriptBlockLoggingAnalyzer/issues/new/choose) and sending pull requests with the *specific improvements*, I can quickly review your suggestions and add them to the module. Many thanks!
