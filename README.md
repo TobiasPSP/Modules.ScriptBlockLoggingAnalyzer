@@ -8,12 +8,13 @@ The source code is logged to the eventlog system, and when scripts are large, th
 
 
 ## Areas of Improvement
-This module is a proof-of-concept in the current version. There are some areas of improvement, and you are cordially invited to help improve the module by issuing pull requests:
+This module is currently a *proof-of-concept*: it works perfectly well but there are a couple of areas that need more love:
 
 - **Windows PowerShell**: currently the module is tailored towards *Windows PowerShell*. *PowerShell 7* logs the data in a different eventlog. It should be fairly easy though to add these eventlog queries as well.
 - **Performance**: `Get-SBLEvent` does a simple eventlog query based on`Get-WinEvent`. It won't expose advanced filtering (yet) so you can only dump *all* logged source codes and then filter the results client-side with `Where-Object`. A much faster approach would be to expose a `-Filter` parameter that uses the native *XPath* filters found in `Get-WinEvent` to quickly search for i.e. *.exe*-files that contain **PowerShell** code or do specific queries for suspicious commands.
 - **Clean-Up**: scriptblock logging logs any **PowerShell** code including custom *prompt* functions etc. It would be nice to have the option to exclude such data from the results provided by `Get-SBLEvent`.
 
+Since this module definitely has the potential to become a very useful analytic tool for blue teamers and basically any security-aware **PowerShell** admin, you are cordially invited to help evolve this module (see end of this file).
 
 ## Install
 
