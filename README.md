@@ -1,7 +1,18 @@
 # Modules.ScriptBlockLoggingAnalyzer
-When scriptblock logging is enabled, all source code is logged and can be examined. 
-This module contains a few functions that help enable, manage, and disable scriptblock logging for Windows PowerShell.
-It especially makes it easier to retrieve the source codes for logged scriptblocks by combining the multi-part eventlog entries.
+**PowerShell** comes with the ability to log all executed source code to the eventlog. This helps companies establish security workflows and identify the **PowerShell** code that runs in their environments, plus identify *who* ran the code.
+
+ScriptblockLogging also exposes **PowerShell** source code shipping inside of applications.
+
+By default, **PowerShell** logs only selected (suspicious) scripts. With the help of this module, you can easily turn on full scriptblock logging and log all **PowerShell** code executing *anywhere* on the machine.
+
+The source code is logged to the eventlog system, and when scripts are large, the source code is separated into many chunks of eventlog data. The module comes with `Get-SBLEvent` which reads the logged source code and recomposes the full script source code.
+
+This module is just a proof-of-concept in the current version. There are some areas of improvement, and you are cordially invited to help improve the module by issuing pull requests:
+
+- **Windows PowerShell**: currently the module is tailored towards *Windows PowerShell*. *PowerShell 7* logs the data in a different eventlog. It should be fairly easy though to add these eventlog queries as well.
+- **Performance**: `Get-SBLEvent` does a simple eventlog query based on`Get-WinEvent`. It won't expose advanced filtering (yet) so you can only dump *all* logged source codes and then filter the results client-side with `Where-Object`. A much faster approach would be to expose a `-Filter` parameter that uses the native *XPath* filters found in `Get-WinEvent` to quickly search for i.e. *.exe*-files that contain **PowerShell** code or do specific queries for suspicious commands.
+- **Clean-Up**: scriptblock logging logs any **PowerShell** code including custom *prompt* functions etc. It would be nice to have the option to exclude such data from the results provided by `Get-SBLEvent`.
+
 
 ## Install
 
@@ -93,6 +104,11 @@ You can automate scanning logged source code and for example routinely search fo
 
 You could also check to see which file types have been executed in the past, and for example identify whether unknown *.exe*-Applications executed **PowerShell** code. If so, you can even see and examine the **PowerShell** code that executed inside such an application. 
 
+This example reads all logged scripts and returns the file extensions found that executed **PowerShell** code:
+
+```
+
+```
 
 This proves that it is unacceptable to ever save sensitive data such as passwords in **PowerShell** scripts, no matter how you wrap them into applications. As you see, even of you launched a script with sensitive passwords *only once*, it *will* end up in the log and compromises all secrets hard-coded inside of it.
 
