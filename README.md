@@ -38,9 +38,9 @@ Note: it may take few minutes until scriptblock logging is fully enabled. The mo
 
 When enabled, all scriptblocks anywhere (manually executed **PowerShell** code, running scripts, or **PowerShell** code executing inside an application) will be logged. Obviously, source code is sensitive and would be a great find for any attacker that wants to understand your IT.
 
-By default, the eventlog access is not restricted so any user can see the logged source code. So in production environments (or anywhere else for that matter), you want to restrict read access to the log and make sure only *Administrators* can view the logged source code.
+By default, the eventlog access is not restricted so any user can see the logged source code. In production environments (or anywhere else for that matter), you want to restrict read access to the log and make sure only *Administrators* can view the logged source code.
 
-The script below is one way to restict access: it copies the access restrictions from the *Security* eventlog to the eventlog that stores the scriptblock source code:
+The script below is *one* way to restict access: it copies the access restrictions from the *Security* eventlog to the eventlog that stores the scriptblock source code:
 
 ```powershell
 # read current access control for eventlog 'Security':
