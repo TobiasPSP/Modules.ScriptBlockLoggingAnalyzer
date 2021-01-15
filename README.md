@@ -1,6 +1,13 @@
 # About
 
-**PowerShell** can log *all executed source code*. This helps companies establish security workflows that identifies the **PowerShell** code that runs in their environments, plus identify *who* ran the code. It can also be used to raise awareness of how vulnerable sensitive data stored inside scripts is (i.e. clear-text passwords). Blue teamers can use the techniques to expose **PowerShell** source code that is running inside of applications.
+**PowerShell** can log *all executed source code*, and serve as a *honey-pot* for malicious scripts. No matter how good an attacker has hidden a **PowerShell** script, scriptblock logging *will* expose it. This won't help much, though, if no one looks at the logged data. This module adds two new cmdlets that can control scriptblock loggingand read the logged data. 
+
+Scriptblock logging is a great tool:
+
+- it helps companies establish security workflows that identifies the **PowerShell** code that runs in their environments, plus identify *who* ran the code. 
+- it can also be used to raise awareness of how vulnerable sensitive data stored inside scripts is (i.e. clear-text passwords). 
+- Blue teamers can use the techniques to expose **PowerShell** source code that is running inside of applications.
+- you can even do statistics and identify what the commands are that scripts in your company typically use, analyze code quality, etc.
 
 By default, **PowerShell** logs only selected (suspicious) scripts. `Enable-SBL` turns on full scriptblock logging and log all **PowerShell** code executing *anywhere* on the machine. This is just setting a registry key so you could control scriptblock logging via Group Policies as well.
 
