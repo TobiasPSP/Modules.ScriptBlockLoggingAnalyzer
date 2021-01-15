@@ -84,7 +84,7 @@ Due to a long-standing bug in all versions of **PowerShell** (including *PowerSh
 
 To read the logged source code, use `Get-SBLEvent`.  By default, reading the logged source code is not restricted. If you hardened the access to the eventlog with the example above, *Administrator* privileges are required. In this case, non-Admins always receive the warning: *No events found.*.
 
-This reads the newest 100 **PowerShell** source codes captured:
+This pulls the newest 100 **PowerShell** source codes captured:
 
 ```
 PS> Get-SBLEvent | Select-Object -First 100
