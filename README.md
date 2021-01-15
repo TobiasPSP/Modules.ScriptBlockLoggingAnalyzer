@@ -96,9 +96,7 @@ Code         : {
 (...)
 ```
 
-*Name* returns the name of the logged script. Interactive commands show *\[from memory\]* instead.
-
-The source code is returned in *Code*.
+*Name* returns the name of the logged script. Interactive commands show *\[from memory\]* instead. The source code is returned in *Code*.
 
 ### Identifying Suspicious Activity
 
@@ -152,6 +150,6 @@ Note: Even if scriptblock logging is not enabled, **PowerShell** will log select
 
 If you have questions or suggestions, please join our [Discussions](https://github.com/TobiasPSP/Modules.ScriptBlockLoggingAnalyzer/discussions).
 
-A much more preferred way is to submit issues and pull requests: if you identify areas of improvement, i.e. expanding it to *PowerShell 7* and adding eventlog filters for better performance, I'd greatly appreciate if you helped code the improvements and share the load of development.
+A much more preferred way is to submit [issues](https://github.com/TobiasPSP/Modules.ScriptBlockLoggingAnalyzer/issues/new/choose) and pull requests: if you identify areas of improvement, i.e. expanding it to *PowerShell 7* and adding eventlog filters for better performance, I'd greatly appreciate if you not just *asked* for the improvements but actually *helped code the improvements* and send the *actual code* to me via pull requests.
 
-By opening [issues](https://github.com/TobiasPSP/Modules.ScriptBlockLoggingAnalyzer/issues/new/choose) and sending pull requests with the *specific improvements*, I can quickly review your suggestions and add them to the module. Many thanks!
+This way we can share the load of development, and I could review your code suggestions and quickly integrate them to the module. Many thanks!
