@@ -1,8 +1,8 @@
 # About
 
-**PowerShell** comes with the ability to log all executed source code to the eventlog. This helps companies establish security workflows and identify the **PowerShell** code that runs in their environments, plus identify *who* ran the code.
+**PowerShell** can log *all executed source code*. This helps companies establish security workflows that identifies the **PowerShell** code that runs in their environments, plus identify *who* ran the code.
 
-ScriptblockLogging also exposes **PowerShell** source code shipping inside of applications.
+It can also be used to raise awareness of how vulnerable sensitive data stored inside scripts is (i.e. clear-text passwords). Blue teamers can use the techniques to expose **PowerShell** source code that is running inside of applications.
 
 By default, **PowerShell** logs only selected (suspicious) scripts. With the help of this module, you can easily turn on full scriptblock logging and log all **PowerShell** code executing *anywhere* on the machine.
 
