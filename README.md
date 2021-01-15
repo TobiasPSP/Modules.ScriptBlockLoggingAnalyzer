@@ -7,7 +7,7 @@ This won't help much, though, if no one looks at the logged data. That's why thi
 Scriptblock logging is a great tool:
 
 - it helps companies establish security workflows that identifies the **PowerShell** code that runs in their environments, plus identify *who* ran the code. 
-- it can also be used to raise awareness of how vulnerable sensitive data stored inside scripts is (i.e. clear-text passwords). 
+- it can also be used to raise awareness of how vulnerable sensitive data stored inside scripts is (i.e. by actually exposing clear-text passwords found in scripts). 
 - Blue teamers can use the techniques to expose **PowerShell** source code that is running inside of applications.
 - you can even do statistics and identify what the commands are that scripts in your company typically use, analyze code quality, etc.
 
