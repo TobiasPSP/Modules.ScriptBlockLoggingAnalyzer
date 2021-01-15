@@ -156,11 +156,11 @@ Obviously, this script yields nothing if there was no *.exe* application on your
 
 ### Conclusions
 
-The previous examples prove that it is *unacceptable* to ever save sensitive data such as passwords in **PowerShell** scripts, no matter how you wrap them into applications. 
+The previous examples prove that it is *unacceptable* to ever save sensitive data such as passwords in **PowerShell** scripts, no matter how you wrap them into applications. Even if you launched a script with sensitive passwords *only once*, it *will* end up in the log and compromises all secrets hard-coded inside of it.
 
-As you see, even of you launched a script with sensitive passwords *only once*, it *will* end up in the log and compromises all secrets hard-coded inside of it.
+Obviously this is not a *limitation* of **PowerShell** but a huge *benefit*: scriptblock logging exposes to you what attackers can do (with a plethora of other means). 
 
-Obviously this is not a *limitation* of **PowerShell** but a huge benefit: scriptblock logging just exposes to you what attackers would do with other means. You can use the examples here to raise sensitivity to this issue among your co-workers.
+Use the examples here to raise sensitivity among your co-workers.
 
 ### Default Logging
 
