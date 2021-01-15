@@ -147,3 +147,6 @@ Obviously this is not a *limitation* of **PowerShell** but a huge benefit: scrip
 
 Note: Even if scriptblock logging is not enabled, **PowerShell** will log selected code based on hard-coded trigger words.
 
+## Contribute
+
+If you have questions or suggestions, please join our (Discussions)[https://github.com/TobiasPSP/Modules.ScriptBlockLoggingAnalyzer/discussions].
