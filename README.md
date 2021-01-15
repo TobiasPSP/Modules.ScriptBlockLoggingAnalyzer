@@ -4,7 +4,7 @@
 
 By default, **PowerShell** logs only selected (suspicious) scripts. `Enable-SBL` turns on full scriptblock logging and log all **PowerShell** code executing *anywhere* on the machine. This is just setting a registry key so you could control scriptblock logging via Group Policies as well.
 
-The source code is logged to the eventlog system, and when scripts are large, the source code is separated into many chunks of eventlog data. The module comes with `Get-SBLEvent` which reads the logged source code and recomposes the full script source code.
+The source code is logged to the eventlog system, and when scripts are large, the source code is separated into many chunks of eventlog data. `Get-SBLEvent` reads the logged source code and recomposes the full script source code.
 
 
 ## Areas of Improvement
