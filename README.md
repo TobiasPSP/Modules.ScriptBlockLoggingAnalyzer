@@ -107,6 +107,10 @@ Code         : {
 
 *Name* returns the name of the logged script. Interactive commands show *\[from memory\]* instead. The source code is returned in *Code*.
 
+Since `Get-SBLEvent` currently has no built-in way of filtering the logged scriptblocks, dumping everything can take a long time. That's why the example above uses `Select-Object -First x` which is the second-best approach: once `Get-SBLEvent` has returned the requested number of logged scriptblocks, `Select-Object` aborts the pipeline.
+
+In future releases, obviously `Get-SBLEvent` should expose its own set of filtering parameters like `-Newest`, `-FileType`, `-Filter`, etc.
+
 Note: When scriptblock logging is *not* enabled, this returns only very few *suspicious* scripts. When you do enable scriptblock logging via `Enable-SBL`, *all* code is logged, including interactive code. However, it may take some time before the scriptblock logging system is doing that: on some systems, logging starts momentarily. On other systems, you may have to wait an hour. If you know more about this initial delay, and why it happens, please share. Once scriptblock logging is running, it then logs code in real-time and does so immediately after reboots. So it's just the initial turning on that may be delayed.
 
 ### Identifying Suspicious Activity
