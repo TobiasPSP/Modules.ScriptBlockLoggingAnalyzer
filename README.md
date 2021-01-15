@@ -107,12 +107,29 @@ You could also check to see which file types have been executed in the past, and
 This example reads all logged scripts and returns the file extensions found that executed **PowerShell** code:
 
 ```
+PS> Get-SBLEvent | 
+  Foreach-Object { [System.IO.Path]::GetExtension($_.Name) } | 
+  Group-Object -NoElement
 
 ```
 
-This proves that it is unacceptable to ever save sensitive data such as passwords in **PowerShell** scripts, no matter how you wrap them into applications. As you see, even of you launched a script with sensitive passwords *only once*, it *will* end up in the log and compromises all secrets hard-coded inside of it.
+Note: based on the number of logged scripts, this may take a couple of minutes to run.
 
-Obviously this is not a *limitation* of **PowerShell** but a huge benefit: scriptblock logging just exposes to you what attackers would do with other means.
+The next example would search for *.exe*-Applications and return file path and **PowerShell** source code content:
+
+```powershell
+Get-SBLEvent | Where-Object { $_.Name -like '*.exe' } | Select-Object -Property Path, Code
+```
+
+Obviously, this script yields nothing if there was no *.exe* application on your system that ran **PowerShell** code.
+
+### Conclusions
+
+The previous examples prove that it is *unacceptable* to ever save sensitive data such as passwords in **PowerShell** scripts, no matter how you wrap them into applications. 
+
+As you see, even of you launched a script with sensitive passwords *only once*, it *will* end up in the log and compromises all secrets hard-coded inside of it.
+
+Obviously this is not a *limitation* of **PowerShell** but a huge benefit: scriptblock logging just exposes to you what attackers would do with other means. You can use the examples here to raise sensitivity to this issue among your co-workers.
 
 ### Default Logging
 
