@@ -1,14 +1,14 @@
 # About
 
-**PowerShell** can log *all executed source code*. This helps companies establish security workflows that identifies the **PowerShell** code that runs in their environments, plus identify *who* ran the code.
+**PowerShell** can log *all executed source code*. This helps companies establish security workflows that identifies the **PowerShell** code that runs in their environments, plus identify *who* ran the code. It can also be used to raise awareness of how vulnerable sensitive data stored inside scripts is (i.e. clear-text passwords). Blue teamers can use the techniques to expose **PowerShell** source code that is running inside of applications.
 
-It can also be used to raise awareness of how vulnerable sensitive data stored inside scripts is (i.e. clear-text passwords). Blue teamers can use the techniques to expose **PowerShell** source code that is running inside of applications.
-
-By default, **PowerShell** logs only selected (suspicious) scripts. With the help of this module, you can easily turn on full scriptblock logging and log all **PowerShell** code executing *anywhere* on the machine.
+By default, **PowerShell** logs only selected (suspicious) scripts. `Enable-SBL` turns on full scriptblock logging and log all **PowerShell** code executing *anywhere* on the machine. This is just setting a registry key so you could control scriptblock logging via Group Policies as well.
 
 The source code is logged to the eventlog system, and when scripts are large, the source code is separated into many chunks of eventlog data. The module comes with `Get-SBLEvent` which reads the logged source code and recomposes the full script source code.
 
-This module is just a proof-of-concept in the current version. There are some areas of improvement, and you are cordially invited to help improve the module by issuing pull requests:
+
+## Areas of Improvement
+This module is a proof-of-concept in the current version. There are some areas of improvement, and you are cordially invited to help improve the module by issuing pull requests:
 
 - **Windows PowerShell**: currently the module is tailored towards *Windows PowerShell*. *PowerShell 7* logs the data in a different eventlog. It should be fairly easy though to add these eventlog queries as well.
 - **Performance**: `Get-SBLEvent` does a simple eventlog query based on`Get-WinEvent`. It won't expose advanced filtering (yet) so you can only dump *all* logged source codes and then filter the results client-side with `Where-Object`. A much faster approach would be to expose a `-Filter` parameter that uses the native *XPath* filters found in `Get-WinEvent` to quickly search for i.e. *.exe*-files that contain **PowerShell** code or do specific queries for suspicious commands.
