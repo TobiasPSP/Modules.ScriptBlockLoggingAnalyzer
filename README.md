@@ -1,6 +1,8 @@
 # About
 
-**PowerShell** can log *all executed source code*, and serve as a *honey-pot* for malicious scripts. No matter how good an attacker has hidden a **PowerShell** script, scriptblock logging *will* expose it. This won't help much, though, if no one looks at the logged data. This module adds two new cmdlets that can control scriptblock loggingand read the logged data. 
+**PowerShell** can log *all executed source code*, and serve as a *honey-pot* for malicious scripts. No matter how good an attacker has hidden a **PowerShell** script, scriptblock logging *will* expose it. 
+
+This won't help much, though, if no one looks at the logged data. That's why this module adds two new cmdlets that help you control scriptblock logging and read the logged data. 
 
 Scriptblock logging is a great tool:
 
