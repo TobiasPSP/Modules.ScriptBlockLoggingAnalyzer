@@ -41,9 +41,14 @@ When enabled, all scriptblocks anywhere (manually executed **PowerShell** code, 
 The script below hardens the read access by applying the same read permissions to the log that is applied to the *Security* eventlog:
 
 ```powershell
-$Path = "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\winevt\Channels\Microsoft-Windows-PowerShell/Operational"
+# read current access control for eventlog 'Security':
 $sddlSecurity = ((wevtutil gl security) -like 'channelAccess*').Split(' ')[-1]
+
+# apply this to the eventlog that logs the scriptblocks:
+$Path = "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\winevt\Channels\Microsoft-Windows-PowerShell/Operational"
 Set-ItemProperty -Path $Path -Name ChannelAccess -Value $sddlSecurity
+
+# restart service to apply settings:
 Restart-Service -Name EventLog -Force
 ```
 
