@@ -36,9 +36,11 @@ Note: it may take up to a few minutes until scriptblock logging is fully enabled
 
 ### Hardening
 
-When enabled, all scriptblocks anywhere (manually executed **PowerShell** code, running scripts, or **PowerShell** code executing inside an application) will be logged. The logged source code is readable for all users so in production environments, you want to restrict read access to the log and make sure only *Administrators* can view the logged source code.
+When enabled, all scriptblocks anywhere (manually executed **PowerShell** code, running scripts, or **PowerShell** code executing inside an application) will be logged. Obviously, source code is sensitive and would be a great find for any attacker that wants to understand your IT.
 
-The script below hardens the read access by applying the same read permissions to the log that is applied to the *Security* eventlog:
+By default, the eventlog access is not restricted so any user can see the logged source code. So in production environments (or anywhere else for that matter), you want to restrict read access to the log and make sure only *Administrators* can view the logged source code.
+
+The script below is one way to restict access: it copies the access restrictions from the *Security* eventlog to the eventlog that stores the scriptblock source code:
 
 ```powershell
 # read current access control for eventlog 'Security':
@@ -51,6 +53,8 @@ Set-ItemProperty -Path $Path -Name ChannelAccess -Value $sddlSecurity
 # restart service to apply settings:
 Restart-Service -Name EventLog -Force
 ```
+
+Microsoft supports other hardening strategies as well. You can protect the source code with certificates as well. This however isn't trivial to set up.
 
 ### Log Size
 
