@@ -1,4 +1,5 @@
-# Modules.ScriptBlockLoggingAnalyzer
+# About
+
 **PowerShell** comes with the ability to log all executed source code to the eventlog. This helps companies establish security workflows and identify the **PowerShell** code that runs in their environments, plus identify *who* ran the code.
 
 ScriptblockLogging also exposes **PowerShell** source code shipping inside of applications.
